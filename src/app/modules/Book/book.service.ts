@@ -24,8 +24,28 @@ const getSingleBook = async (bookId: string) => {
   return result;
 };
 
+const updateBook = async (
+  bookId: string,
+  data: Partial<Book>
+): Promise<Book> => {
+  const isExist = await prisma.book.findUniqueOrThrow({
+    where: {
+      bookId,
+    },
+  });
+
+  const result = await prisma.book.update({
+    where: {
+      bookId,
+    },
+    data,
+  });
+  return result;
+};
+
 export const BookService = {
   getAllBook,
   creteBook,
   getSingleBook,
+  updateBook,
 };

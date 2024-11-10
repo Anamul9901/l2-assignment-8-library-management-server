@@ -5,7 +5,7 @@ import sendResponse from "../../../shared/sendResponse";
 
 const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
   const result = await BookService.getAllBook();
-  
+
   sendResponse(res, {
     success: true,
     statusCode: 200,
@@ -25,21 +25,31 @@ const createBookToDB: RequestHandler = catchAsync(async (req, res) => {
   });
 });
 
-const getSingleBookFromDB: RequestHandler = catchAsync(async(req, res)=>{
-console.log(req.params)
+const getSingleBookFromDB: RequestHandler = catchAsync(async (req, res) => {
+  const result = await BookService.getSingleBook(req.params.bookId);
 
-const result = await BookService.getSingleBook(req.params.bookId)
-
-sendResponse(res, {
+  sendResponse(res, {
     success: true,
     statusCode: 200,
     message: "Book retrieved successfully",
     data: result,
   });
-})
+});
+
+const updateBookFromDB: RequestHandler = catchAsync(async (req, res) => {
+  const result = await BookService.updateBook(req.params.bookId, req.body);
+
+  sendResponse(res, {
+    success: true,
+    statusCode: 200,
+    message: "Book updated successfully",
+    data: result,
+  });
+});
 
 export const BookController = {
   getAllFromDB,
   createBookToDB,
-  getSingleBookFromDB
+  getSingleBookFromDB,
+  updateBookFromDB
 };

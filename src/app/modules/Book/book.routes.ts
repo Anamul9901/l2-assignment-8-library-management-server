@@ -9,4 +9,6 @@ router.post("/", BookController.createBookToDB);
 
 router.get("/:bookId", BookController.getSingleBookFromDB);
 
+router.put('/:bookId', BookController.updateBookFromDB);
+
 export const BookRoutes = router;
