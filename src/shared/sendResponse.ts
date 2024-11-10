@@ -12,6 +12,7 @@ const sendResponse = <T>(
   res.status(jsonData.statusCode).json({
     success: jsonData.success,
     message: jsonData.message,
+    status: jsonData.statusCode,
     data: jsonData.data || null || undefined,
   });
 };

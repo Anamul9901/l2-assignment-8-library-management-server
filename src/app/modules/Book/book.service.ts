@@ -43,9 +43,26 @@ const updateBook = async (
   return result;
 };
 
+
+const deleteBook = async(bookId: string)=>{
+    const isExist = await prisma.book.findUniqueOrThrow({
+        where: {
+            bookId
+        }
+    })
+
+    const result = await prisma.book.delete({
+        where: {
+            bookId
+        }
+    })
+
+    return result
+}
 export const BookService = {
   getAllBook,
   creteBook,
   getSingleBook,
   updateBook,
+  deleteBook
 };
