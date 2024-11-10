@@ -5,8 +5,13 @@ import sendResponse from "../../../shared/sendResponse";
 
 const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
   const result = await BookService.getAllBook();
-  console.log("asdfasdfsdf");
-  //   return result;
+  
+  sendResponse(res, {
+    success: true,
+    statusCode: 200,
+    message: "Books retrieved successfully",
+    data: result,
+  });
 });
 
 const createBookToDB: RequestHandler = catchAsync(async (req, res) => {
