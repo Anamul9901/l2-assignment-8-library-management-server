@@ -15,7 +15,6 @@ const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
 });
 
 const createBookToDB: RequestHandler = catchAsync(async (req, res) => {
-  console.log(req.body);
   const result = await BookService.creteBook(req.body);
 
   sendResponse(res, {
@@ -26,7 +25,21 @@ const createBookToDB: RequestHandler = catchAsync(async (req, res) => {
   });
 });
 
+const getSingleBookFromDB: RequestHandler = catchAsync(async(req, res)=>{
+console.log(req.params)
+
+const result = await BookService.getSingleBook(req.params.bookId)
+
+sendResponse(res, {
+    success: true,
+    statusCode: 200,
+    message: "Book retrieved successfully",
+    data: result,
+  });
+})
+
 export const BookController = {
   getAllFromDB,
   createBookToDB,
+  getSingleBookFromDB
 };

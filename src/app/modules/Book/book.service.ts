@@ -8,15 +8,24 @@ const getAllBook = async () => {
   return result;
 };
 
+const creteBook = async (data: Book) => {
+  const result = await prisma.book.create({ data });
 
-const creteBook = async(data: Book)=>{
-const result = await prisma.book.create({data})
+  return result;
+};
 
-return result;
-}
+const getSingleBook = async (bookId: string) => {
+  const result = await prisma.book.findUnique({
+    where: {
+      bookId,
+    },
+  });
 
+  return result;
+};
 
 export const BookService = {
-    getAllBook,
-    creteBook
-}
+  getAllBook,
+  creteBook,
+  getSingleBook,
+};
