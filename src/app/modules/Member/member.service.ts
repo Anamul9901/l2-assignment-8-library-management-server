@@ -8,6 +8,19 @@ const getAllMember = async () => {
 };
 
 const createMember = async (data: Member) => {
+  try {
+    await prisma.member.findUniqueOrThrow({
+      where: {
+        email: data.email,
+      },
+    });
+    throw new Error("Email already exists");
+  } catch (err: any) {
+    if (err.name !== "NotFoundError") {
+      throw err;
+    }
+  }
+
   const result = await prisma.member.create({ data });
   return result;
 };
