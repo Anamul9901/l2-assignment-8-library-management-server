@@ -19,7 +19,19 @@ const borrowBookFromDB: RequestHandler = catchAsync(async (req, res) => {
   });
 });
 
+const returnBookToDB: RequestHandler= catchAsync(async(req, res)=>{
+    const result = await BorrowReturnService.returnBook(req.body.borrowId);
+
+    sendResponse(res, {
+        success: true,
+        statusCode: 200,
+        message: "Book returned successfully",
+        data: null
+      });
+})
+
 
 export const BorrowReturnController = {
-    borrowBookFromDB
+    borrowBookFromDB,
+    returnBookToDB
 }
