@@ -43,6 +43,7 @@ const returnBook = async (borrowId: string) => {
   const borroRecord = await prisma.borrowRecord.findUniqueOrThrow({
     where: {
       borrowId,
+      returnDate: null
     },
   });
 
