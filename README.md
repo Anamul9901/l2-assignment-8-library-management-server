@@ -62,8 +62,9 @@ Each table uses a UUID as a primary key.
 ## Setup Instructions
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Anamul9901/l2-assignment-8-library-management-server.git
-   cd l2-assignment-8-library-management-server
+   -- git clone https://github.com/Anamul9901/l2-assignment-8-library-management-server.git
+   -- cd l2-assignment-8-library-management-server
 
-   yarn
-
+   -- yarn
+   -- npx prisma migrate dev
+   -- yarn dev
