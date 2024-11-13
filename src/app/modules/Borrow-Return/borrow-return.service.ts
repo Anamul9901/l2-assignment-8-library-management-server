@@ -40,18 +40,37 @@ const createBorrow = async (data: BorrowRecord) => {
 };
 
 const returnBook = async (borrowId: string) => {
-  await prisma.borrowRecord.findUniqueOrThrow({
+  const borroRecord = await prisma.borrowRecord.findUniqueOrThrow({
     where: {
       borrowId,
     },
   });
-  const result = await prisma.borrowRecord.update({
+
+  const findBorrowBook = await prisma.book.findUnique({
     where: {
-      borrowId,
+      bookId: borroRecord.bookId,
     },
-    data: {
-      returnDate: new Date(),
-    },
+  });
+
+  const result = await prisma.$transaction(async (transactionClient) => {
+    const result = await prisma.borrowRecord.update({
+      where: {
+        borrowId,
+      },
+      data: {
+        returnDate: new Date(),
+      },
+    });
+
+    await prisma.book.update({
+      where: {
+        bookId: borroRecord.bookId,
+      },
+      data: {
+        availableCopies: findBorrowBook!.availableCopies + 1,
+      },
+    });
+    return result
   });
 
   return result;
