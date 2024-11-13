@@ -1,17 +1,20 @@
-# Library Management System API
+# Library Management System
 
 ## Project Overview
-This Library Management System API enables library staff and members to manage books, memberships, and borrowing activities effectively. It is built with Node.js, Express, TypeScript, Prisma ORM, and PostgreSQL. The API provides endpoints for CRUD operations on books, members, and borrow records, along with dedicated endpoints for borrowing and returning books.
+This Library Management System API helps library staff and members manage books, membership, and borrowing activitis. It is built with Node.js, Express, TypeScript, Prisma ORM, and PostgreSQL. The API includes:
+CRUD (Create, Read, Update, Delete) oparations for managing books, members, and borrowing records.
+Special endpoints for borrowing and returning books.
+This setup makes managing library resources simple and efficient.
 
 ## Live URL
-[Library Management System API - Live Deployment](https://your-live-url.com)
+[Library Management System - Live Deployment](https://l2-a8-ser.vercel.app/)
 
 ## Technology Stack
-- **Node.js** - Backend runtime environment
-- **Express.js** - Web framework for Node.js
-- **TypeScript** - Strongly typed programming language for JavaScript
-- **Prisma ORM** - Database ORM for handling PostgreSQL interactions
-- **PostgreSQL** - Relational database for data storage
+- **Node.js** 
+- **Express.js** 
+- **TypeScript** 
+- **Prisma ORM** 
+- **PostgreSQL** 
 
 ## Project Features
 ### Main Features
@@ -24,7 +27,7 @@ This Library Management System API enables library staff and members to manage b
    - Borrow a book by specifying member and book details
    - Return borrowed books and update availability
 
-### Bonus Features
+### Other Features
 1. **Error Handling** - Standardized error messages with HTTP status codes and descriptions.
 2. **Overdue Borrow List** - View overdue borrowed books, with borrower details and the number of overdue days.
 
@@ -59,5 +62,8 @@ Each table uses a UUID as a primary key.
 ## Setup Instructions
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/library-management-system-api.git
-   cd library-management-system-api
+   git clone https://github.com/Anamul9901/l2-assignment-8-library-management-server.git
+   cd l2-assignment-8-library-management-server
+
+   yarn
+
